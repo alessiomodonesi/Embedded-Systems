@@ -1,2 +1,2 @@
-# Embedded-Systems-Project
+# Embedded-Systems
 Esercizi di Programmazione di Sistemi Embedded
