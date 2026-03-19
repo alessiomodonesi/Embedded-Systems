@@ -28,7 +28,7 @@ class MainActivity: ComponentActivity()
         enableEdgeToEdge()
 
         // Set and display the UI content
-        setContent {
+        setContent { // implemento l'UI dell'activity come funzione @composable
             ComposeHelloWithButtonTheme {
                 // Reference: https://developer.android.com/develop/ui/compose/components/scaffold
                 // The scaffold fills the whole display area
