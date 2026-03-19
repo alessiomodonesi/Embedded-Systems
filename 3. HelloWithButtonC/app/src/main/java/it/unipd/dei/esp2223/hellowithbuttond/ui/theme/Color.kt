@@ -2,6 +2,7 @@ package it.unipd.dei.esp2223.hellowithbuttond.ui.theme
 
 import androidx.compose.ui.graphics.Color
 
+// temi e colori definiti solitamente seguendo Material Design
 val Purple80 = Color(0xFFD0BCFF)
 val PurpleGrey80 = Color(0xFFCCC2DC)
 val Pink80 = Color(0xFFEFB8C8)

@@ -42,36 +42,40 @@ class MainActivity: ComponentActivity()
     }
 }
 
-@Composable
+@Composable // fuori dalla classe main sactivity
 fun MainScreen(modifier: Modifier = Modifier)
 {
-    val pleasePress = stringResource(R.string.please_press)
+    val pleasePress = stringResource(R.string.please_press) // recupero la stringa dal file strings.xml
     val goodJob = stringResource(R.string.good_job)
 
     // Reference: https://developer.android.com/jetpack/compose/state
-    var t by remember { mutableStateOf(pleasePress) }
+    var t by remember { mutableStateOf(pleasePress) } // il contenuto della casella di testo è segnalata come stato
+    // quando la casella di testo cambia, compose scatena la ricomposizione
 
     // Reference: https://developer.android.com/develop/ui/compose/layouts/constraintlayout
-    ConstraintLayout(modifier = modifier) {
-        val (bu, tv) = createRefs()
+    ConstraintLayout(modifier = modifier) { // interfaccia utente
+        val (bu, tv) = createRefs() // creare le reference <=> creare gli ID nella classe View
 
+        // bottone con testo
         Button(
-            modifier = Modifier.constrainAs(bu) {
+            modifier = Modifier.constrainAs(bu) { // modifier per il positioning
                 top.linkTo(parent.top)
                 start.linkTo(parent.start, margin = 4.dp)
             },
             // Set the action to be performed when the button is pressed
-            onClick = { t = goodJob }
+            onClick = { t = goodJob } // Listener come funzione lambda
         ) {
-            Text(text = stringResource(R.string.press_me))
+            Text(text = stringResource(R.string.press_me)) // altro oggetto Text contenuto nel bottone
+            // stringa costante che non fa parte dello stato
         }
 
+        // casella di testo != text view
         Text(
-            modifier = Modifier.constrainAs(tv) {
-                start.linkTo(bu.end, margin = 4.dp)
+            modifier = Modifier.constrainAs(tv) { // modifier per il positioning
+                start.linkTo(bu.end, margin = 4.dp) // 4.dp == 4 pixel density independent
                 baseline.linkTo(bu.baseline)
             },
-            text = t
+            text = t // il testo dell'oggetto è lo stato
         )
     }
 }
