@@ -16,14 +16,11 @@ import com.hfad.secretmessage.ui.theme.SecretMessageTheme
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
-        // Enable edge-to-edge display on API level < 35
         enableEdgeToEdge()
-
         setContent {
             SecretMessageTheme {
                 val navController = rememberNavController()
-
+                var message: String = "";
                 Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
                     NavHost(
                         navController = navController, startDestination = "welcome",
@@ -34,8 +31,18 @@ class MainActivity : ComponentActivity() {
                                 onStartClicked = { navController.navigate("message") }
                             )
                         }
+
                         composable("message") {
-                            MessageScreen()
+                            message = messageScreen(
+                                goEncryptScreen = { navController.navigate("encrypt") }
+                            )
+                        }
+
+                        composable("encrypt") {
+                            EncryptScreen(
+                                messageCrypt = message,
+                                goHomeScreen = { navController.popBackStack("welcome", false) }
+                            )
                         }
                     }
                 }

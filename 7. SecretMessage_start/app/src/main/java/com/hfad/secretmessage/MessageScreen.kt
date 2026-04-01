@@ -22,9 +22,10 @@ import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import kotlin.math.max
 
 @Composable
-fun MessageScreen() {
+fun messageScreen(goEncryptScreen: () -> Unit) : String {
     var message by rememberSaveable { mutableStateOf("") }
 
     Column(
@@ -47,8 +48,10 @@ fun MessageScreen() {
 
         Spacer(modifier = Modifier.height(20.dp))
 
-        Button(onClick = {}) {
+        Button(onClick = goEncryptScreen) {
             Text(text = stringResource(R.string.next))
         }
     }
+
+    return message
 }
