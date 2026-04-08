@@ -1,6 +1,8 @@
 package com.hfad.secretmessage
 
 import android.os.Bundle
+// package per utilizzare gli Uri
+import android.net.Uri
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
@@ -33,18 +35,23 @@ class MainActivity : ComponentActivity() {
                         }
 
                         composable("message") {
-                            MessageScreen { msg ->
-                                message = msg
-                                navController.navigate("encrypt") {
-                                    popUpTo("welcome")
+                            MessageScreen(
+                                onNextClicked = { msg ->
+                                    navController.navigate("encrypt/${Uri.encode(msg)}") {
+                                        // il 2o parametro è il builder, che fornisce le opzioni di navigazione
+                                        // con la sintassi kotlin lo inserisco come parametro della funzione
+                                        popUpTo("welcome") // alla pressione del tasto Back torna alla schermata welcome
+                                    }
                                 }
-                                // il 2o parametro è il builder, che fornisce le opzioni di navigazione
-                                // con la sintassi kotlin lo inserisco come parametro della funzione
-                            }
+                            )
                         }
 
-                        composable("encrypt") {
-                            EncryptScreen(messageCrypt = message)
+                        composable("encrypt/{message}") { backStackEntry ->
+                            EncryptScreen(
+                                Uri.decode(
+                                    backStackEntry.arguments?.getString("message").orEmpty()
+                                )
+                            )
                         }
                     }
                 }

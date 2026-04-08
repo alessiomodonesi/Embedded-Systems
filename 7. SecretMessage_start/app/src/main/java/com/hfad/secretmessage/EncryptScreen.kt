@@ -1,5 +1,6 @@
 package com.hfad.secretmessage
 
+import android.os.Message
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
@@ -17,7 +18,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 
 @Composable
-fun EncryptScreen(messageCrypt: String) {
+fun EncryptScreen(message: String) {
     Column(
         modifier = Modifier
             .fillMaxSize()
@@ -36,12 +37,10 @@ fun EncryptScreen(messageCrypt: String) {
         Spacer(modifier = Modifier.height(32.dp))
 
         Text(
-            text = messageCrypt.reversed(),
+            text = message.reversed(),
             fontSize = 20.sp,
             textAlign = TextAlign.Center,
             modifier = Modifier.fillMaxWidth()
         )
-
-        Spacer(modifier = Modifier.height(20.dp))
     }
 }
