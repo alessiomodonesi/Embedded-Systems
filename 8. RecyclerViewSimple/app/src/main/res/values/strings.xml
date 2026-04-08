@@ -32,5 +32,10 @@
         <item>Dahlia</item>
         <item>Tulip</item>
         <item>Dandelion</item>
+        <item>Orchid</item>
+        <item>Gardenia</item>
+        <item>Camellia</item>
+        <item>Hydrangea</item>
+        <item>Jasmine</item>
     </string-array>
 </resources>

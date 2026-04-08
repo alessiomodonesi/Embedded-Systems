@@ -21,9 +21,12 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
+import android.util.Log
 
 class FlowerAdapter(private val flowerList: Array<String>) :
     RecyclerView.Adapter<FlowerAdapter.FlowerViewHolder>() {
+
+    val mTAG : String = this.javaClass.simpleName
 
     // Describes an item view and its place within the RecyclerView
     class FlowerViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
@@ -39,6 +42,7 @@ class FlowerAdapter(private val flowerList: Array<String>) :
         val view = LayoutInflater.from(parent.context)
             .inflate(R.layout.flower_item, parent, false)
 
+        Log.v(mTAG, "onCreateViewHolder called")
         return FlowerViewHolder(view)
     }
 
@@ -49,6 +53,7 @@ class FlowerAdapter(private val flowerList: Array<String>) :
 
     // Displays data at a certain position
     override fun onBindViewHolder(holder: FlowerViewHolder, position: Int) {
-        holder.bind(flowerList[position])
+        holder.bind("$position - ${flowerList[position]}")
+        Log.v(mTAG, "onBindViewHolder called")
     }
 }

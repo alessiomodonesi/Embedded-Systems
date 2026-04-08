@@ -19,6 +19,8 @@
     For the <merge> tag, see
     https://developer.android.com/training/improving-layouts/reusing-layouts#Merge
 -->
+
+<!-- contenitore semplice per contenere recyclerview -->
 <merge xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
@@ -28,4 +30,5 @@
         android:layout_height="match_parent"
         android:fitsSystemWindows="true"
         app:layoutManager="LinearLayoutManager" />
+    <!-- di default il layout manager impila gli elementi in verticale -->
 </merge>

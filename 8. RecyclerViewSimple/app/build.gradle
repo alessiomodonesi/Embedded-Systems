@@ -61,5 +61,6 @@ dependencies {
     androidTestImplementation 'androidx.test.ext:junit:1.3.0'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.7.0'
 
+    // libreria che implementa recyclerview
     implementation 'androidx.recyclerview:recyclerview:1.4.0'
 }

@@ -25,3 +25,24 @@ class Datasource(private val context: Context) {
         return context.resources.getStringArray(R.array.flower_array)
     }
 }
+
+/* <resources>
+    <string name="app_name">RecyclerView Sample</string>
+
+    <!-- Add in flower names  -->
+    <string-array name="flower_array">
+        <item>Lily</item>
+        <item>Poppy</item>
+        <item>Sunflower</item>
+        <item>Freesia</item>
+        <item>Daisy</item>
+        <item>Rose</item>
+        <item>Daffodil</item>
+        <item>Lavender</item>
+        <item>Peony</item>
+        <item>Lilac</item>
+        <item>Dahlia</item>
+        <item>Tulip</item>
+        <item>Dandelion</item>
+    </string-array>
+</resources> */

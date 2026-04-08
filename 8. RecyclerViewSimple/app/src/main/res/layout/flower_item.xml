@@ -19,7 +19,7 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
 
-    <!-- Add in TextView to display flower name   -->
+    <!-- Add in TextView to display flower name -->
     <TextView
         android:id="@+id/flower_text"
         android:layout_width="match_parent"
