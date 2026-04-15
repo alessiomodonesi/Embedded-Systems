@@ -24,14 +24,10 @@
         android:id="@+id/flower_number"
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
-        android:minWidth="64dp"
+        android:minWidth="75dp"
         android:text="TextView"
         android:textSize="50sp"
         tools:ignore="HardcodedText" />
-
-    <Space
-        android:layout_width="15dp"
-        android:layout_height="15dp"/>
 
     <!-- Add in TextView to display flower name -->
     <TextView
