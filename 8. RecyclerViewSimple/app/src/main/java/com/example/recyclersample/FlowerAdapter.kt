@@ -28,16 +28,44 @@ class FlowerAdapter(private val flowerList: Array<String>) :
 
     val mTAG : String = this.javaClass.simpleName
 
-    // Describes an item view and its place within the RecyclerView
+    /**
+     * Rappresenta l'involucro (container) per la view di un singolo elemento della lista.
+     * * Il compito principale di questa classe è mantenere i riferimenti (cache) alle
+     * sotto-view del layout (es. TextView, ImageView) per evitare costose chiamate ripetute
+     * a [View.findViewById] durante lo scorrimento della RecyclerView.
+     *
+     * @param itemView La view radice (root view) del layout dell'elemento (flower_item.xml).
+     */
     class FlowerViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+
+        // Il riferimento alla TextView viene "cercato" e salvato una sola volta
+        // al momento della creazione del ViewHolder.
         private val flowerTextView: TextView = itemView.findViewById(R.id.flower_text)
 
+        /**
+         * Associa i dati specifici di un fiore agli elementi visivi (UI).
+         * * Centralizzando la logica di binding qui dentro, manteniamo l'Adapter pulito
+         * e separiamo le responsabilità.
+         *
+         * @param word La stringa di testo da mostrare (es. l'indice e il nome del fiore).
+         */
         fun bind(word: String) {
+            // holder.bind("$position - ${flowerList[position]}")
             flowerTextView.text = word
         }
     }
 
-    // Returns a new ViewHolder
+    /**
+     * Invocato quando la RecyclerView necessita di un nuovo [FlowerViewHolder].
+     *
+     * Questo metodo si occupa esclusivamente di "gonfiare" (inflate) il layout XML
+     * per creare la struttura visiva dell'elemento, senza popolarne i dati.
+     * Grazie al meccanismo di riciclo, viene chiamato solo un numero limitato di volte.
+     *
+     * @param parent Il ViewGroup (la RecyclerView stessa) a cui la view sarà associata.
+     * @param viewType L'identificatore del tipo di view (utile se la lista ha layout multipli).
+     * @return Una nuova istanza di FlowerViewHolder.
+     */
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): FlowerViewHolder {
         val view = LayoutInflater.from(parent.context)
             .inflate(R.layout.flower_item, parent, false)
@@ -51,8 +79,18 @@ class FlowerAdapter(private val flowerList: Array<String>) :
         return flowerList.size
     }
 
-    // Displays data at a certain position
+    /**
+     * Invocato dalla RecyclerView per visualizzare i dati in una posizione specifica.
+     *
+     * Questo metodo è responsabile dell'aggiornamento dell'interfaccia utente del
+     * [FlowerViewHolder] (sia esso nuovo o riciclato) con i dati corrispondenti
+     * all'elemento in [position].
+     *
+     * @param holder Il ViewHolder che deve essere aggiornato con i nuovi contenuti.
+     * @param position L'indice dell'elemento all'interno della [flowerList].
+     */
     override fun onBindViewHolder(holder: FlowerViewHolder, position: Int) {
+        // Popola la UI combinando l'indice e il nome del fiore
         holder.bind("$position - ${flowerList[position]}")
         Log.v(mTAG, "onBindViewHolder called")
     }

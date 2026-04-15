@@ -32,6 +32,7 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
 
         // Retrieves data from datasource
+        // in un app "non simple" si potrebbe passare il path di un DB o un file JSON
         val flowerList = Datasource(this).getFlowerList()
 
         val recyclerView: RecyclerView = findViewById(R.id.recycler_view)
