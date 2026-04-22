@@ -5,7 +5,7 @@
     android:layout_height="match_parent"
     android:gravity="center">
 
-    <!-- indice della lista -->
+    <!-- flower info -->
     <TextView
         android:id="@+id/flower_info"
         android:layout_width="match_parent"

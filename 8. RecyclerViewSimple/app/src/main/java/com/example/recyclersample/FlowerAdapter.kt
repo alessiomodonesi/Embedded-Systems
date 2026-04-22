@@ -54,7 +54,7 @@ class FlowerAdapter(private val flowerList: Array<String>) :
          * @param word La stringa di testo da mostrare (es. l'indice e il nome del fiore).
          */
         fun bind(index : Int, word: String) {
-            flowerNumberTextView.text = index.toString().padStart(2, '0')
+            flowerNumberTextView.text = if (index < 9) "0${index.inc()}" else index.inc().toString()
             flowerNameTextView.text = word
 
             itemView.setOnClickListener {
