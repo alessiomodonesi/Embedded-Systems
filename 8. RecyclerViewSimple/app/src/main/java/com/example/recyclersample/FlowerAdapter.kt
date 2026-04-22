@@ -16,6 +16,8 @@
 
 package com.example.recyclersample
 
+import android.content.Context
+import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -42,6 +44,7 @@ class FlowerAdapter(private val flowerList: Array<String>) :
         // al momento della creazione del ViewHolder.
         private val flowerNumberTextView: TextView = itemView.findViewById(R.id.flower_number)
         private val flowerNameTextView: TextView = itemView.findViewById(R.id.flower_text)
+        private val intent = Intent(itemView.context, DetailActivity::class.java)
 
         /**
          * Associa i dati specifici di un fiore agli elementi visivi (UI).
@@ -51,9 +54,13 @@ class FlowerAdapter(private val flowerList: Array<String>) :
          * @param word La stringa di testo da mostrare (es. l'indice e il nome del fiore).
          */
         fun bind(index : Int, word: String) {
-
-            flowerNumberTextView.text = if (index < 9) "0${index.inc()}" else index.inc().toString()
+            flowerNumberTextView.text = index.toString().padStart(2, '0')
             flowerNameTextView.text = word
+
+            itemView.setOnClickListener {
+                intent.putExtra("FLOWER_NAME", word)
+                itemView.context.startActivity(intent)
+            }
         }
     }
 
