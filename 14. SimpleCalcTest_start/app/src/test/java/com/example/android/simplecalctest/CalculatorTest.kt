@@ -78,9 +78,8 @@ class CalculatorTest {
         assertEquals(Double.POSITIVE_INFINITY, result, 0.0)
     }
 
-    @Test // 1.0 / 0.0 = Infinity
-    fun zeroDivision1() {
-        val result = mCalculator!!.div(1.0, 0.0)
-
+    @Test(expected = IllegalArgumentException::class)
+    fun divByZeroThrows(){
+        mCalculator!!.div(32.0, 0.0)
     }
 }
