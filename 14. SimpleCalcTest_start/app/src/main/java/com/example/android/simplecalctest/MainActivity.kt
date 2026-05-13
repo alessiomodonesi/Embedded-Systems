@@ -96,7 +96,10 @@ class MainActivity : Activity() {
      * @return the operand text which was entered in an EditText.
      */
     private fun getOperandText(operandEditText: EditText): String {
-        return operandEditText.text.toString()
+        val operandText = operandEditText.text.toString()
+        if (TextUtils.isEmpty(operandText))
+            throw NumberFormatException("Operand cannot be empty")
+        return operandText
     }
 
     private fun compute(operator: Operator) {
